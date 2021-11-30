@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+
+.finish {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

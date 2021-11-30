@@ -1,0 +1,31 @@
+### Cadastrar um novo produto
+POST https://localhost:5001/api/produto/create
+Content-Type: application/json
+
+{
+    "Nome" : "Whey",
+    "Preco" : 3.5,
+    "Quantidade": 10,
+    "Descricao" : "Whey Protein é um suplemento proteico feito a partir da proteína extraída do soro do leite, composta principalmente por alfa-globulina e beta-globulina. O produto possui aminoácidos essenciais que são rapidamente absorvidos pelo corpo, substâncias que
+    participam de forma ativa na construção de músculos e tecidos",
+    "CategoriaId" : 1
+}
+
+### Listar todos os produtos
+GET https://localhost:5001/api/produto/list
+
+### Buscar um produto pelo id
+GET https://localhost:5001/api/produto/getbyid/1
+
+### Deletar um produto pelo nome
+DELETE https://localhost:5001/api/produto/delete/Bolacha
+
+### Alterar um produto
+PUT https://localhost:5001/api/produto/update
+Content-Type: application/json
+
+{
+    "Id" : 1,
+    "Nome" : "Whey alterado",
+    "Preco" : 3.5
+}

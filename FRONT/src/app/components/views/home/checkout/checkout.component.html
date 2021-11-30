@@ -1,0 +1,78 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Checkout</mat-card-title>
+    </mat-card-header>
+    <div class="checkoutbox">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Itens
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <table mat-table [dataSource]="itens" class="table mat-elevation-z8">
+
+                    <ng-container matColumnDef="nome">
+                        <th class="header" mat-header-cell *matHeaderCellDef> Nome </th>
+                        <td mat-cell *matCellDef="let item"> {{item.produto.nome}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="preco">
+                        <th class="header" mat-header-cell *matHeaderCellDef> Preço </th>
+                        <td mat-cell *matCellDef="let item"> {{item.preco | currency: "BRL" }} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="quantidade">
+                        <th class="header" mat-header-cell *matHeaderCellDef> Quantidade </th>
+                        <td mat-cell *matCellDef="let item"> {{item.produto.quantidade}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="total">
+                        <th class="header" mat-header-cell *matHeaderCellDef> Total </th>
+                        <td mat-cell *matCellDef="let item"> {{ item.produto.quantidade * item.produto.preco | currency:
+                            "BRL" }} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
+                    <tr mat-row *matRowDef="let row; columns: colunasExibidas;"></tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Dados pessoais
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nome completo</mat-label>
+                    <input matInput placeholder="Seu nome completo" value="{{venda.cliente}}" [(ngModel)]="venda.cliente">
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Forma de pagamento
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Forma de pagamento</mat-label>
+                        <mat-select [(ngModel)]="selectedValue" name="food">
+                            <mat-option *ngFor="let pagamento of pagamentos" [value]="pagamento">
+                                {{pagamento.nome}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p *ngIf="selectedValue !== ''"> Pagamento selecionado: {{selectedValue.nome}} </p>
+                </form>
+            </mat-card-content>
+        </mat-card>
+        <a mat-raised-button color="primary" (click)="concluirCompra()">
+            Concluir compra
+        </a>
+    </div>
+</mat-card>
